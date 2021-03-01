@@ -8,8 +8,9 @@ public class CamRaycasting : MonoBehaviour
 
     private Interactable currentTarget;
     private Camera mainCam;
+    LayerMask noPlayer = ~(1<<8);
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         mainCam = Camera.main;
     }
@@ -23,15 +24,16 @@ public class CamRaycasting : MonoBehaviour
             if(currentTarget != null){
                 currentTarget.OnInteract();
             }
+            //Debug.Log("working");
         }
     }
 
     private void RayCastForInteract(){
         RaycastHit aiming;
 
-        Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
-
-        if(Physics.Raycast(ray, out aiming, range)){
+        //Ray ray = mainCam.ViewportPointToRay(new Vector3(0.5f,0.5f,.5f));
+        //Ray ray = new Ray(transform.position, mainCam.transform.position-transform.position);
+        if(Physics.Raycast(mainCam.transform.position, mainCam.transform.forward, out aiming, range)){
             Interactable interaction = aiming.collider.GetComponent<Interactable>();
             if (interaction != null){
                 if(aiming.distance <= interaction.maxRange){

@@ -2,13 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Complejidad O(n^2), es fácil de verlo porque para cada elemento se debe recorrer el vector completo
-//comparando 1 a 1, ya que no están ordenados y no se tiene "memoria" de lo recorrido
-
-public class P1_Algorithm : MonoBehaviour
+public class Pract2_Interact : MonoBehaviour, Interactable
 {
-    // Start is called before the first frame update
-    void Start()
+    public float maxRange {get{return mxRange;}}
+    private const float mxRange = 5f;
+
+    public void OnHoverStart(){
+        Debug.Log("Presiona E para ver práctica 1");
+    }
+
+    public void OnInteract(){
+       LogPract2();
+    }
+
+    public void OnHoverEnd(){
+        
+    }
+
+    public void LogPract2()
     {
         int[] nums = {8,1,2,2,3};
         int[] result= {0,0,0,0,0};
@@ -24,11 +35,5 @@ public class P1_Algorithm : MonoBehaviour
 
     void printVector(int[] nums){
             Debug.Log("["+string.Join(", ", nums)+"]");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

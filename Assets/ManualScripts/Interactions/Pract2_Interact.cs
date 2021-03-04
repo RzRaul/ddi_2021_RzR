@@ -8,7 +8,7 @@ public class Pract2_Interact : MonoBehaviour, Interactable
     private const float mxRange = 5f;
 
     public void OnHoverStart(){
-        Debug.Log("Presiona E para ver práctica 1");
+        Debug.Log("Presiona E para ver práctica 2");
     }
 
     public void OnInteract(){

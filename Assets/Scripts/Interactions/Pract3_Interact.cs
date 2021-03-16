@@ -8,6 +8,7 @@ public class Pract3_Interact : MonoBehaviour, Interactable
 {
     public float maxRange {get{return mxRange;}}
     private const float mxRange = 5f;
+    public Item item;
 
     public void OnHoverStart(){
         Debug.Log("Presiona E para ver práctica 3");
@@ -15,6 +16,7 @@ public class Pract3_Interact : MonoBehaviour, Interactable
 
     public void OnInteract(){
        LogPract3(9);
+       Inventory.instance.AddItem(item);
     }
 
     public void OnHoverEnd(){

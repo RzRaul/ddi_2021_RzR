@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
@@ -43,6 +44,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
+        [SerializeField] private Inventory inv;
+        // private GameObject ip = inv.GetComponent<GameObject>();
         // Use this for initialization
         private void Start()
         {
@@ -56,6 +59,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
+            
         }
 
 
@@ -82,9 +86,20 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
+            menu();
         }
 
-
+        void menu(){
+            if(Input.GetKeyDown(KeyCode.Tab)){
+                inv.hideInventory();
+                m_MouseLook.lockCursor = !m_MouseLook.lockCursor;
+                if (!m_MouseLook.lockCursor)
+                {
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = !m_MouseLook.lockCursor;
+                }
+            }
+        }
         private void PlayLandingSound()
         {
             m_AudioSource.clip = m_LandSound;

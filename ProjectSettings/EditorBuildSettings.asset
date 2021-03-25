@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
-  m_configObjects: {}
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/VuforiaScene.unity
+    guid: 426c170c48141d14884e5ce080601c18
+  m_configObjects:
+    com.unity.xr.arcore.PlayerSettings: {fileID: 11400000, guid: 57c43b23651159e45ba1aeeb913338ac,
+      type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 3b78055f19f0a5b4ab84ef619e4e63aa,
+      type: 2}
+    xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: 8917c3e19cea9de4794f9dd2646cebcb,
+      type: 2}
